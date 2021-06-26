@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Spring_Login_with_Social
 =======
+=======
+>>>>>>> 55eb536 (First Commit)
 # Spring_Login
 
 This app provides the features below
@@ -22,4 +25,7 @@ This app provides the features below
 
 
 
+<<<<<<< HEAD
+>>>>>>> 55eb536 (First Commit)
+=======
 >>>>>>> 55eb536 (First Commit)
