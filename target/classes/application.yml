@@ -9,10 +9,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-<<<<<<< HEAD
-=======
 
->>>>>>> 546004f (Milestone 1)
   security:
     oauth2:
       client:

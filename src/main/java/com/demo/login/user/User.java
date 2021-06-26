@@ -14,9 +14,6 @@ import javax.persistence.*;
         @Column(nullable = false, unique = true, length = 45)
         private String email;
 
-        @Enumerated(EnumType.STRING)
-        @Column(name = "auth_provider")
-        private AuthenticationProvider authProvider;
 
         @Column(nullable = false, length = 64)
         private String password;
@@ -30,7 +27,7 @@ import javax.persistence.*;
 //        private String auth_provider
         @Enumerated(EnumType.STRING)
         @Column(name = "auth_provider")
-        private AuthenticationProvider authprovider;
+        private AuthenticationProvider authProvider;
 
 
 
@@ -81,11 +78,5 @@ import javax.persistence.*;
             this.authProvider = authProvider;
         }
 
-        public AuthenticationProvider getAuthprovider() {
-            return authprovider;
-        }
 
-        public void setAuthprovider(AuthenticationProvider authprovider) {
-            this.authprovider = authprovider;
-        }
     }
