@@ -1,5 +1,7 @@
 package com.demo.login.user;
 
+import com.demo.login.security.AuthenticationProvider;
+
 import javax.persistence.*;
 
     @Entity
@@ -12,7 +14,9 @@ import javax.persistence.*;
         @Column(nullable = false, unique = true, length = 45)
         private String email;
 
-
+        @Enumerated(EnumType.STRING)
+        @Column(name = "auth_provider")
+        private AuthenticationProvider authProvider;
 
         @Column(nullable = false, length = 64)
         private String password;
@@ -62,7 +66,13 @@ import javax.persistence.*;
         public void setLastName(String lastName) {
             this.lastName = lastName;
         }
+        public AuthenticationProvider getAuthProvider() {
+            return authProvider;
+        }
 
+        public void setAuthProvider(AuthenticationProvider authProvider) {
+            this.authProvider = authProvider;
+        }
 
         // getters and setters are not shown
 
