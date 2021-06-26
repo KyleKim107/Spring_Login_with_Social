@@ -27,6 +27,13 @@ import javax.persistence.*;
         @Column(name = "last_name", nullable = false, length = 20)
         private String lastName;
 
+//        private String auth_provider
+        @Enumerated(EnumType.STRING)
+        @Column(name = "auth_provider")
+        private AuthenticationProvider authprovider;
+
+
+
         public Long getId() {
             return id;
         }
@@ -74,6 +81,11 @@ import javax.persistence.*;
             this.authProvider = authProvider;
         }
 
-        // getters and setters are not shown
+        public AuthenticationProvider getAuthprovider() {
+            return authprovider;
+        }
 
-}
+        public void setAuthprovider(AuthenticationProvider authprovider) {
+            this.authprovider = authprovider;
+        }
+    }
