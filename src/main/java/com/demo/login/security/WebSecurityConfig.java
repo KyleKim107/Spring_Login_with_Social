@@ -47,16 +47,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/list_users").authenticated()
+                .antMatchers("/list_users","/oauth/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .usernameParameter("email")
                 .defaultSuccessUrl("/users")
                 .permitAll()
+//                .and()
+//                .oauth2Login()
+//                .loginPage("/login")
+//                .userInfoEndpoint()
+//                .userService(oauthUserService)
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
     }
+//    @Autowired
+//    private CustomOAuth2UserService oauthUserService;
+
 
 
 }
