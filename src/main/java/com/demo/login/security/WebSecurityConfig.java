@@ -51,19 +51,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .usernameParameter("email")
-                .defaultSuccessUrl("/users")
-                .permitAll()
-//                .and()
-//                .oauth2Login()
-//                .loginPage("/login")
-//                .userInfoEndpoint()
-//                .userService(oauthUserService)
+                    .usernameParameter("email")
+                    .defaultSuccessUrl("/users")
+                    .permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/").permitAll();
+                .oauth2Login()
+                    .loginPage("/login")
+                    .userInfoEndpoint()
+                    .userService(oauthUserService)
+                .and()
+                .and()
+                .logout()
+                    .logoutSuccessUrl("/")
+                    .permitAll();
     }
-//    @Autowired
-//    private CustomOAuth2UserService oauthUserService;
+    @Autowired
+    private CustomOAuth2UserService oauthUserService;
 
 
 
