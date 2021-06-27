@@ -59,7 +59,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .userInfoEndpoint()
                     .userService(oauthUserService)
-                .and()
+                    .and()
+                    .successHandler(oAuth2LoginSuccessHandler)
                 .and()
                 .logout()
                     .logoutSuccessUrl("/")
@@ -67,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Autowired
     private CustomOAuth2UserService oauthUserService;
-
-
+    @Autowired
+    private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
 
 }
