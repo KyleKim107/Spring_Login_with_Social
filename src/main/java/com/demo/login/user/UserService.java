@@ -1,5 +1,6 @@
 package com.demo.login.user;
 
+import com.demo.login.security.AuthenticationProvider;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,10 +16,26 @@ public class UserService implements UserRepository{
     public UserService(EntityManager em) {
         this.em = em;
     }
+    public void createNewUserAfterOAuthLoginSuccess(String email, String name, AuthenticationProvider provider){
+        User user = new User();
+        user.setEmail(email);
+        user.setFirstName(name);
+        user.setLastName(null);
+        user.setAuthProvider(provider);
+        em.persist(user);
+    }
 
+    public void updateCustomerAfterOAuthLoginSuccess(User user , String name,AuthenticationProvider provider){
+        user.setFirstName(name);
+        user.setAuthProvider(provider);
+        em.persist(user);
+    }
     @Override
     public User findByEmail(String email) {
-        return null;
+        User result = em.createQuery("select m from User m where m.email = :email", User.class)
+                .setParameter("email", email)
+                .getSingleResult();;
+        return result;
     }
 
     @Override
